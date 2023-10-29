@@ -1,0 +1,31 @@
+<mat-toolbar [ngStyle]="navStyle" color="primary">
+    <button
+        (click)="toggleSidebar.emit()"
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with menu icon"
+    >
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <a href=""
+        ><img ngSrc="{{ logoPrincipal }}" alt="logo" width="40" height="48"
+    /></a>
+    <span>Aplicación Estudiantes</span>
+
+    <span class="example-spacer"></span>
+
+    <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon class="profile-menu">account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+            <mat-icon class="icon-nav2">manage_accounts</mat-icon>
+            Profile
+        </button>
+        <button mat-menu-item>
+            <mat-icon class="icon-nav2">logout</mat-icon>
+            Logout
+        </button>
+    </mat-menu>
+</mat-toolbar>

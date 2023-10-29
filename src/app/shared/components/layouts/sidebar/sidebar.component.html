@@ -1,0 +1,28 @@
+<mat-nav-list>
+    <!--<mat-list-item *ngFor="let link of links" [activated]="link.isActive">
+        <a matListItemTitle href="#">{{ link }}</a>
+        <button mat-icon-button (click)="showInfo(link)" matListItemMeta>
+            <mat-icon>info</mat-icon>
+        </button>
+    </mat-list-item>-->
+    <mat-list-item routerLink="home" [activated]="true">
+        <mat-icon>home</mat-icon>
+        <a class="item-menu link-underline-light">Home</a>
+    </mat-list-item>
+    <mat-list-item routerLink="users">
+        <mat-icon>person</mat-icon>
+        <a class="item-menu link-underline-light">Usuarios</a>
+    </mat-list-item>
+    <mat-list-item routerLink="courses">
+        <mat-icon>school</mat-icon>
+        <a class="item-menu link-underline-light">Cursos</a>
+    </mat-list-item>
+    <mat-list-item routerLink="students">
+        <mat-icon>groups_2</mat-icon>
+        <a class="item-menu link-underline-light">Alumnos</a>
+    </mat-list-item>
+    <mat-list-item routerLink="enrollments">
+        <mat-icon>app_registration</mat-icon>
+        <a class="item-menu link-underline-light">Inscripciones</a>
+    </mat-list-item>
+</mat-nav-list>
