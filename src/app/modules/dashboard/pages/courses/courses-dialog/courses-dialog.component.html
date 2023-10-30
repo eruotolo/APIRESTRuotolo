@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 p-5">
+            <form [formGroup]="courseForm">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 mat-dialog-title [ngStyle]="{'text-transform': 'uppercase'}">Registro de Curso</h3>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap">
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="inputName">
+                            <mat-label>Nombre de Curso</mat-label>
+                            <input
+                                [formControl]="nameControl"
+                                matInput
+                                placeholder="Nombre de Curso">
+                            <mat-error *ngIf="nameControl.hasError('required')">
+                                Este campo es requerido
+                            </mat-error>
+                            <mat-error *ngIf="nameControl.hasError('minlength')">
+                                La longitud mínima es de {{ nameControl.getError('minlength').requiredLength }}
+                                caracteres.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="inputteacher">
+                            <mat-label>Profesor del Curso</mat-label>
+                            <input
+                                [formControl]="teacherControl"
+                                matInput
+                                placeholder="Profesor del Curso">
+                            <mat-error *ngIf="teacherControl.hasError('required')">
+                                Este campo es requerido
+                            </mat-error>
+                            <mat-error *ngIf="teacherControl.hasError('minlength')">
+                                La longitud mínima es de {{ teacherControl.getError('minlength').requiredLength }}
+                                caracteres.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="inputday">
+                            <mat-label>Día del Curso</mat-label>
+                            <input
+                                [formControl]="dayControl"
+                                matInput
+                                placeholder="Día del Curso">
+                            <mat-error *ngIf="dayControl.hasError('required')">
+                                Este campo es requerido
+                            </mat-error>
+                            <mat-error *ngIf="dayControl.hasError('minlength')">
+                                La longitud mínima es de {{ dayControl.getError('minlength').requiredLength }}
+                                caracteres.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 btnSendClose">
+                        <mat-dialog-actions align="end">
+                            <button mat-dialog-close mat-flat-button [ngStyle]="{'background-color': '#e0e0e0'}">
+                                Cerrar
+                            </button>
+                            <button
+                                [disabled]="courseForm.invalid"
+                                mat-flat-button
+                                color="primary"
+                                (click)="onSubmit()">Cargar
+                            </button>
+                        </mat-dialog-actions>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
