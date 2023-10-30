@@ -1,2 +1,21 @@
-<h1>CONTENIDO USUARIOS</h1>
-<button mat-flat-button color="primary">Primary</button>
+<div class="container">
+    <div class="row list-users">
+        <div class="col-6">
+            <h2>Listado de Usuarios</h2>
+        </div>
+        <div class="col-6">
+            <button mat-flat-button
+                    color="primary"
+                    [ngStyle]="{ float: 'right' }"
+                    (click)="abrirPopUpUsuario()">
+                <mat-icon>add</mat-icon> Agregar Nuevo Usuario</button>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center mt-4 mb-4">
+        <app-users-table
+            [dataSource]="users"
+            (editUser) = "onEditUser($event)"
+            (deleteUser)="onDeleteUser($event)"
+            ></app-users-table>
+    </div>
+</div>
