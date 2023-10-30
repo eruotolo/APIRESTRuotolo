@@ -27,14 +27,14 @@ import { CoursesDialogComponent } from './courses-dialog/courses-dialog.componen
     exports: [CoursesComponent],
     imports: [
         CommonModule,
-        MatButtonModule,
+        MatDialogModule,
         MatIconModule,
         MatTableModule,
         PipesModule,
-        MatDialogModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
+        MatButtonModule,
         MatInputModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
     ],
 })
 export class CoursesModule {}

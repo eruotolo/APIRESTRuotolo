@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CourseInterface } from '@core/models/course.interface';
 import { CourseService } from '@modules/dashboard/pages/courses/course-service/course.service';
+
 import { MatDialog } from '@angular/material/dialog';
-import { StudentsDialogComponent } from '@modules/dashboard/pages/students/students-dialog/students-dialog.component';
 import { CoursesDialogComponent } from '@modules/dashboard/pages/courses/courses-dialog/courses-dialog.component';
 
 @Component({
@@ -22,7 +22,6 @@ export class CoursesComponent {
 
     // AGREGAR ESTUDIANTE
     abrirPopUpCourse(): void {
-        const currentDate = new Date();
         this.dialogCourse
             .open(CoursesDialogComponent)
             .afterClosed()
@@ -34,9 +33,27 @@ export class CoursesComponent {
                             {
                                 ...valor,
                                 id: this.courses.length + 1,
-                                regDate: currentDate,
                             },
                         ];
+                    }
+                },
+            });
+    }
+
+    //EDITAR ESTUDIANTE (falta agregar el edit)
+
+    onEditCourse(course: CourseInterface): void {
+        this.dialogCourse
+            .open(CoursesDialogComponent, {
+                data: course,
+            })
+            .afterClosed()
+            .subscribe({
+                next: (v) => {
+                    if (!!v) {
+                        this.courses = this.courses.map((c) =>
+                            c.id === course.id ? { ...c, ...v } : c,
+                        );
                     }
                 },
             });

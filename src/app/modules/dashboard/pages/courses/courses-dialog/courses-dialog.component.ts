@@ -6,8 +6,8 @@ import {
     Validators,
 } from '@angular/forms';
 
-import { CourseInterface } from '@core/models/course.interface';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CourseInterface } from '@core/models/course.interface';
 
 @Component({
     selector: 'app-courses-dialog',
@@ -40,10 +40,11 @@ export class CoursesDialogComponent {
         @Inject(MAT_DIALOG_DATA) public course?: CourseInterface,
     ) {
         this.courseForm = this.formBuilder.group({
-            name: this.nameControl,
-            teacher: this.teacherControl,
-            day: this.dayControl,
+            nameCourse: this.nameControl,
+            teacherCourse: this.teacherControl,
+            dayCourse: this.dayControl,
         });
+
         if (this.course) {
             this.courseForm.patchValue(this.course);
         }

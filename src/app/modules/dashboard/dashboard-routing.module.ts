@@ -6,6 +6,7 @@ import { UsersComponent } from '@modules/dashboard/pages/users/users.component';
 import { CoursesComponent } from '@modules/dashboard/pages/courses/courses.component';
 import { StudentsComponent } from '@modules/dashboard/pages/students/students.component';
 import { EnrollmentsComponent } from '@modules/dashboard/pages/enrollments/enrollments.component';
+import { UserProfileComponent } from '@modules/dashboard/pages/users/user-profile/user-profile.component';
 
 const routes: Routes = [
     {
@@ -19,6 +20,12 @@ const routes: Routes = [
             {
                 path: 'users',
                 component: UsersComponent,
+                children: [
+                    {
+                        path: 'profile',
+                        component: UserProfileComponent,
+                    },
+                ],
             },
             {
                 path: 'courses',

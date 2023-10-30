@@ -2,9 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StudentsComponent } from './students.component';
 import { StudentsTableComponent } from './students-table/students-table.component';
-
-import { StudentInterface } from '@core/models/student.interface';
-import { StudentsService } from '@modules/dashboard/pages/students/students-service/students.service';
 import { PipesModule } from '@shared/pipes/pipes.module';
 
 // MODULOS NECESARIOS PARA FORMULARIOS.
@@ -18,7 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 
 // IMPORTAR MATDIALOG MODULE
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { StudentsDialogComponent } from './students-dialog/students-dialog.component';
 
 @NgModule({
