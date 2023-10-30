@@ -1,0 +1,114 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="studentForm">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 mat-dialog-title [ngStyle]="{'text-transform': 'uppercase'}">Registro de Estudiante</h3>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap">
+                    <div class="col-6">
+                        <mat-form-field appearance="outline" class="inputName">
+                            <mat-label>Nombre</mat-label>
+                            <input
+                                [formControl]="nameControl"
+                                matInput
+                                placeholder="Nombre">
+                            <mat-error *ngIf="nameControl.hasError('required')">
+                                Este campo es requerido
+                            </mat-error>
+                            <mat-error *ngIf="nameControl.hasError('minlength')">
+                                La longitud mínima es de {{ nameControl.getError('minlength').requiredLength }}
+                                caracteres.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field appearance="outline" class="inputLastName">
+                            <mat-label>Apellido</mat-label>
+                            <input
+                                [formControl]="lastnameControl"
+                                matInput
+                                placeholder="Apellido">
+                            <mat-error *ngIf="lastnameControl.hasError('required')">
+                                Este campo es requerido
+                            </mat-error>
+                            <mat-error *ngIf="lastnameControl.hasError('minlength')">
+                                La longitud mínima es de {{ lastnameControl.getError('minlength').requiredLength }}
+                                caracteres.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" class="inputEmail">
+                            <mat-label>Email</mat-label>
+                            <input
+                                [formControl]="emailControl"
+                                matInput
+                                type="email"
+                                placeholder="Ex. pat@example.com">
+                            <mat-error *ngIf="emailControl.hasError('required')">
+                                Este campo es requerido
+                            </mat-error>
+                            <mat-error *ngIf="emailControl.hasError('minlength')">
+                                La longitud mínima es de {{ emailControl.getError('minlength').requiredLength }}
+                                caracteres.
+                            </mat-error>
+                            <mat-error *ngIf="emailControl.hasError('invalidEmail')">
+                                El correo electrónico no es válido.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field appearance="outline" class="inputEdad">
+                            <mat-label>Edad</mat-label>
+                            <input
+                                [formControl]="ageControl"
+                                matInput
+                                type="number"
+                            >
+                            <mat-error *ngIf="ageControl.hasError('required')">
+                                Este campo es requerido
+                            </mat-error>
+                            <mat-error *ngIf="ageControl.hasError('pattern')">
+                                Ingrese solo números en este campo
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field appearance="outline" class="inputCurso">
+                            <mat-label>Curso</mat-label>
+                            <input
+                                [formControl]="courseControl"
+                                matInput
+                                type="text">
+                            <mat-error *ngIf="courseControl.hasError('required')">
+                                Este campo es requerido
+                            </mat-error>
+                            <mat-error *ngIf="courseControl.hasError('minlength')">
+                                La longitud mínima es de {{ courseControl.getError('minlength').requiredLength }}
+                                caracteres.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 btnSendClose">
+                        <mat-dialog-actions align="end">
+                            <button mat-dialog-close mat-flat-button [ngStyle]="{'background-color': '#e0e0e0'}">
+                                Cerrar
+                            </button>
+                            <button
+                                [disabled]="studentForm.invalid"
+                                mat-flat-button
+                                color="primary"
+                                (click)="onSubmit()">Cargar
+                            </button>
+                        </mat-dialog-actions>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

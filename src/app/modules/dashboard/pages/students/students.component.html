@@ -1,1 +1,19 @@
-<h1>CONTENIDO ESTUDIANTES</h1>
+<div class="container">
+    <div class="row list-students">
+        <div class="col-6"><h2>Listado de Estudiantes</h2></div>
+        <div class="col-6">
+            <button
+                mat-flat-button
+                color="primary"
+                [ngStyle]="{ float: 'right' }"
+                (click)="abrirPopUpStudent()"
+                ><mat-icon>add</mat-icon> Agregar Nuevo Estudiante</button>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center mt-4 mb-4">
+        <app-students-table [dataSource]="students"
+                            (editUser)="onEditStudent($event)"
+                            (deleteUser)="onDeleteStudent($event)"></app-students-table>
+        <!--<app-students-dialog></app-students-dialog>-->
+    </div>
+</div>
