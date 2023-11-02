@@ -59,7 +59,7 @@ export class UsersComponent {
     }
 
     // ELIMINAR USUARIO
-    onDeleteUser(userId: number): void {
+    /*onDeleteUser(userId: number): void {
         this.users = this.users.filter((u) => u.id !== userId);
 
         Swal.fire({
@@ -67,6 +67,23 @@ export class UsersComponent {
             title: 'Usuario Eliminado',
             showConfirmButton: false,
             timer: 2000,
+        });
+    }*/
+
+    onDeleteUser(userId: number): void {
+        Swal.fire({
+            title: 'Estas seguro?',
+            text: '¡No podrás revertir esto!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Eliminar!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire('Eliminado!', 'El usuario fue eliminado.', 'success');
+                this.users = this.users.filter((u) => u.id !== userId);
+            }
         });
     }
 }

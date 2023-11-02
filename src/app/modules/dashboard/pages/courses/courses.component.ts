@@ -42,7 +42,6 @@ export class CoursesComponent {
     }
 
     //EDITAR ESTUDIANTE (falta agregar el edit)
-
     onEditCourse(course: CourseInterface): void {
         this.dialogCourse
             .open(CoursesDialogComponent, {
@@ -61,13 +60,29 @@ export class CoursesComponent {
     }
 
     //ELIMINAR ESTUDIANTE
-    onDeleteCourse(courseId: number): void {
+    /*onDeleteCourse(courseId: number): void {
         this.courses = this.courses.filter((s) => s.id !== courseId);
         Swal.fire({
             icon: 'success',
             title: 'Curso Eliminado',
             showConfirmButton: false,
             timer: 1800,
+        });
+    }*/
+    onDeleteCourse(courseId: number): void {
+        Swal.fire({
+            title: 'Estas seguro?',
+            text: '¡No podrás revertir esto!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Eliminar!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire('Eliminado!', 'El curso fue eliminado.', 'success');
+                this.courses = this.courses.filter((s) => s.id !== courseId);
+            }
         });
     }
 }

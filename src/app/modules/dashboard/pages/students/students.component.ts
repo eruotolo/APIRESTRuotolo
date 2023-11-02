@@ -62,13 +62,34 @@ export class StudentsComponent {
     }
 
     //ELIMINAR ESTUDIANTE
-    onDeleteStudent(studentId: number): void {
+    /*onDeleteStudent(studentId: number): void {
         this.students = this.students.filter((s) => s.id !== studentId);
         Swal.fire({
             icon: 'success',
             title: 'Alumno Eliminado',
             showConfirmButton: false,
             timer: 1800,
+        });
+    }*/
+
+    onDeleteStudent(studentId: number): void {
+        Swal.fire({
+            title: 'Estas seguro?',
+            text: '¡No podrás revertir esto!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Eliminar!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Eliminado!',
+                    'El estudiante fue eliminado.',
+                    'success',
+                );
+                this.students = this.students.filter((s) => s.id !== studentId);
+            }
         });
     }
 }
