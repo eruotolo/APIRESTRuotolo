@@ -4,6 +4,7 @@ import { CourseService } from '@modules/dashboard/pages/courses/course-service/c
 
 import { MatDialog } from '@angular/material/dialog';
 import { CoursesDialogComponent } from '@modules/dashboard/pages/courses/courses-dialog/courses-dialog.component';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-courses',
@@ -62,5 +63,11 @@ export class CoursesComponent {
     //ELIMINAR ESTUDIANTE
     onDeleteCourse(courseId: number): void {
         this.courses = this.courses.filter((s) => s.id !== courseId);
+        Swal.fire({
+            icon: 'success',
+            title: 'Curso Eliminado',
+            showConfirmButton: false,
+            timer: 1800,
+        });
     }
 }

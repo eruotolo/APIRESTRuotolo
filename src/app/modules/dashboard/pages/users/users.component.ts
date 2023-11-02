@@ -3,6 +3,7 @@ import { UserInterface } from '@core/models/user.interface';
 import { UsersService } from '@modules/dashboard/pages/users/users-service/users.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UsersDialogComponent } from '@modules/dashboard/pages/users/users-dialog/users-dialog.component';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-users',
@@ -60,5 +61,12 @@ export class UsersComponent {
     // ELIMINAR USUARIO
     onDeleteUser(userId: number): void {
         this.users = this.users.filter((u) => u.id !== userId);
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Usuario Eliminado',
+            showConfirmButton: false,
+            timer: 2000,
+        });
     }
 }

@@ -4,6 +4,7 @@ import { StudentsService } from '@modules/dashboard/pages/students/students-serv
 
 import { MatDialog } from '@angular/material/dialog';
 import { StudentsDialogComponent } from '@modules/dashboard/pages/students/students-dialog/students-dialog.component';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-students',
@@ -63,5 +64,11 @@ export class StudentsComponent {
     //ELIMINAR ESTUDIANTE
     onDeleteStudent(studentId: number): void {
         this.students = this.students.filter((s) => s.id !== studentId);
+        Swal.fire({
+            icon: 'success',
+            title: 'Alumno Eliminado',
+            showConfirmButton: false,
+            timer: 1800,
+        });
     }
 }
