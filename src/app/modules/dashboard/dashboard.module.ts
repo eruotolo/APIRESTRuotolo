@@ -17,11 +17,11 @@ import { EnrollmentsModule } from '@modules/dashboard/pages/enrollments/enrollme
     exports: [DashboardComponent],
     imports: [
         CommonModule,
+        RouterOutlet,
         MatSidenavModule,
         MatButtonModule,
         LayoutsModule,
         MatIconModule,
-        RouterOutlet,
         DashboardRoutingModule,
         RouterModule,
         HomeModule,
