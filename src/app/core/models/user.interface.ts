@@ -4,4 +4,6 @@ export interface UserInterface {
     lastname: string;
     email: string;
     rol: 'Admin' | 'User';
+    password: string;
+    token: string;
 }

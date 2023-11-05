@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { AuthService } from '@modules/auth/services/auth.service';
 
 @Component({
     selector: 'app-toolbar',
@@ -13,4 +14,10 @@ export class ToolbarComponent {
     public navStyle = {
         height: '10vh',
     };
+
+    constructor(private authService: AuthService) {}
+
+    logout(): void {
+        this.authService.logout();
+    }
 }

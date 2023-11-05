@@ -1,0 +1,16 @@
+.pag-log {
+    height: 100vh;
+    width: 100%;
+}
+.login {
+    height: 100vh;
+}
+.students {
+    height: 100vh;
+    background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(63, 81, 181, 0.7)
+        ),
+        url("/assets/images/students.jpg");
+    background-size: cover;
+}

@@ -16,6 +16,8 @@ export class UsersService {
                 lastname: 'Ruotolo',
                 email: 'edgardoruotolo@gmail.com',
                 rol: 'Admin',
+                password: 'admin',
+                token: 'asdfghjklñasdfghjklñasdfghjklñ',
             },
             {
                 id: 2,
@@ -23,6 +25,8 @@ export class UsersService {
                 lastname: 'Martinez',
                 email: 'marianomartinez@gmail.com',
                 rol: 'User',
+                password: '123456',
+                token: 'zxcvbnmzxcvbnmzxcvbnm',
             },
             {
                 id: 3,
@@ -30,6 +34,8 @@ export class UsersService {
                 lastname: 'De León',
                 email: 'idelon@gmail.com',
                 rol: 'User',
+                password: '123456',
+                token: 'qwertyuiopqwertyuiopqwertyuiop',
             },
         ];
     }

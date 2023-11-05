@@ -62,16 +62,6 @@ export class StudentsComponent {
     }
 
     //ELIMINAR ESTUDIANTE
-    /*onDeleteStudent(studentId: number): void {
-        this.students = this.students.filter((s) => s.id !== studentId);
-        Swal.fire({
-            icon: 'success',
-            title: 'Alumno Eliminado',
-            showConfirmButton: false,
-            timer: 1800,
-        });
-    }*/
-
     onDeleteStudent(studentId: number): void {
         Swal.fire({
             title: 'Estas seguro?',

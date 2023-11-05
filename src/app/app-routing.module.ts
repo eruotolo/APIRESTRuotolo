@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { dashboardGuard } from '@core/guards/dashboard.guard';
 
 const routes: Routes = [
     {
@@ -9,10 +10,15 @@ const routes: Routes = [
     },
     {
         path: 'dashboard',
+        canActivate: [dashboardGuard],
         loadChildren: () =>
             import('@modules/dashboard/dashboard.module').then(
                 (m) => m.DashboardModule,
             ),
+    },
+    {
+        path: '**',
+        redirectTo: 'auth',
     },
 ];
 

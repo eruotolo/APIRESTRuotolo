@@ -8,9 +8,8 @@
         <mat-icon>menu</mat-icon>
     </button>
 
-    <a href=""
-        ><img ngSrc="{{ logoPrincipal }}" alt="logo" width="40" height="48"
-    /></a>
+    <a href=""><img ngSrc="{{ logoPrincipal }}" alt="logo" width="40" height="48"/></a>
+
     <span>Aplicación Estudiantes</span>
 
     <span class="example-spacer"></span>
@@ -21,11 +20,11 @@
     <mat-menu #menu="matMenu">
         <button mat-menu-item>
             <mat-icon class="icon-nav2">manage_accounts</mat-icon>
-            Profile
+            Perfil
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item (click)="logout()">
             <mat-icon class="icon-nav2">logout</mat-icon>
-            Logout
+            Cerrar Sesión
         </button>
     </mat-menu>
 </mat-toolbar>

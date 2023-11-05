@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UsersTableComponent } from './users-table/users-table.component';
 import { UsersDialogComponent } from './users-dialog/users-dialog.component';
+import { UsersRoutingModule } from '@modules/dashboard/pages/users/users-routing.module';
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import { UsersDialogComponent } from './users-dialog/users-dialog.component';
         MatTableModule,
         MatDialogModule,
         MatSelectModule,
+        UsersRoutingModule,
     ],
 })
 export class UsersModule {}

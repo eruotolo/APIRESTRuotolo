@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CoursesComponent } from './courses.component';
 import { CoursesTableComponent } from './courses-table/courses-table.component';
 import { PipesModule } from '@shared/pipes/pipes.module';
+import { CoursesRoutingModule } from '@modules/dashboard/pages/courses/courses-routing.module';
 
 // MODULOS NECESARIOS PARA FORMULARIOS.
 import { MatIconModule } from '@angular/material/icon';
@@ -35,6 +36,7 @@ import { CoursesDialogComponent } from './courses-dialog/courses-dialog.componen
         MatInputModule,
         MatFormFieldModule,
         ReactiveFormsModule,
+        CoursesRoutingModule,
     ],
 })
 export class CoursesModule {}

@@ -19,25 +19,31 @@ const routes: Routes = [
             },
             {
                 path: 'users',
-                component: UsersComponent,
-                children: [
-                    {
-                        path: 'profile',
-                        component: UserProfileComponent,
-                    },
-                ],
+                loadChildren: () =>
+                    import('@modules/dashboard/pages/users/users.module').then(
+                        (m) => m.UsersModule,
+                    ),
             },
             {
                 path: 'courses',
-                component: CoursesComponent,
+                loadChildren: () =>
+                    import(
+                        '@modules/dashboard/pages/courses/courses.module'
+                    ).then((m) => m.CoursesModule),
             },
             {
                 path: 'students',
-                component: StudentsComponent,
+                loadChildren: () =>
+                    import(
+                        '@modules/dashboard/pages/students/students.module'
+                    ).then((m) => m.StudentsModule),
             },
             {
                 path: 'enrollments',
-                component: EnrollmentsComponent,
+                loadChildren: () =>
+                    import(
+                        '@modules/dashboard/pages/enrollments/enrollments.module'
+                    ).then((m) => m.EnrollmentsModule),
             },
             {
                 path: '**',

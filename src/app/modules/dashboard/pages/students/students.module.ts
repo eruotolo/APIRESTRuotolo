@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StudentsComponent } from './students.component';
 import { StudentsTableComponent } from './students-table/students-table.component';
 import { PipesModule } from '@shared/pipes/pipes.module';
+import { StudentsRoutingModule } from '@modules/dashboard/pages/students/students-routing.module';
 
 // MODULOS NECESARIOS PARA FORMULARIOS.
 import { MatIconModule } from '@angular/material/icon';
@@ -35,6 +36,7 @@ import { StudentsDialogComponent } from './students-dialog/students-dialog.compo
         MatInputModule,
         MatFormFieldModule,
         ReactiveFormsModule,
+        StudentsRoutingModule,
     ],
 })
 export class StudentsModule {}
