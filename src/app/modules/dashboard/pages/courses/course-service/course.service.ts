@@ -1,45 +1,36 @@
 import { Injectable } from '@angular/core';
+
 import { CourseInterface } from '@core/models/course.interface';
+import { environment } from '../../../../../../environments/environment.local';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CourseService {
-    constructor() {}
+    private baseUrl = environment.baseUrl + '/courses';
+    public courses: CourseInterface[] = [];
+    constructor(private httpClient: HttpClient) {}
 
-    getCourses(): CourseInterface[] {
-        console.log('retornando data mock');
-        return [
-            {
-                id: 1,
-                nameCourse: 'Php',
-                teacherCourse: 'Orlando Gadea',
-                dayCourse: 'Lunes - 12:30 a 15:00',
-            },
-            {
-                id: 2,
-                nameCourse: 'Programación 1',
-                teacherCourse: 'Ignacio',
-                dayCourse: 'Martes - 12:30 a 15:00',
-            },
-            {
-                id: 3,
-                nameCourse: 'Base de Datos',
-                teacherCourse: 'Enzo',
-                dayCourse: 'Miércoles - 12:30 a 15:00',
-            },
-            {
-                id: 4,
-                nameCourse: 'Lógica',
-                teacherCourse: 'Mariano',
-                dayCourse: 'Jueves - 12:30 a 15:00',
-            },
-            {
-                id: 5,
-                nameCourse: 'CC++',
-                teacherCourse: 'Ignacio',
-                dayCourse: 'Viernes - 12:30 a 15:00',
-            },
-        ];
+    getCourses(): Observable<CourseInterface[]> {
+        return this.httpClient.get<CourseInterface[]>(this.baseUrl);
+    }
+
+    addCourse(course: CourseInterface): Observable<CourseInterface> {
+        return this.httpClient.post<CourseInterface>(this.baseUrl, course);
+    }
+
+    updateCourse(
+        courseId: number,
+        course: CourseInterface,
+    ): Observable<CourseInterface> {
+        const url = `${this.baseUrl}/${courseId}`;
+        return this.httpClient.put<CourseInterface>(url, course);
+    }
+
+    deleteCourse(courseId: number): Observable<void> {
+        const url = `${this.baseUrl}/${courseId}`;
+        return this.httpClient.delete<void>(url);
     }
 }

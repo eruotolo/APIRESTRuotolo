@@ -29,20 +29,29 @@ export class StudentsComponent {
 
     // AGREGAR ESTUDIANTE
     abrirPopUpStudent(): void {
-        const currentDate = new Date();
         this.dialogStudent
             .open(StudentsDialogComponent)
             .afterClosed()
             .subscribe({
                 next: (valor) => {
                     if (!!valor) {
-                        this.students = [
-                            ...this.students,
-                            {
-                                ...valor,
-                                id: this.students.length + 1,
+                        this.studentsService.addStudent(valor).subscribe(
+                            (newStudent) => {
+                                this.students = [...this.students, newStudent];
+                                Swal.fire(
+                                    'Éxito',
+                                    'Estudiante agregado con éxito',
+                                    'success',
+                                );
                             },
-                        ];
+                            (error) => {
+                                Swal.fire(
+                                    'Error',
+                                    'Hubo un problema al agregar el usuario',
+                                    'error',
+                                );
+                            },
+                        );
                     }
                 },
             });
@@ -56,11 +65,20 @@ export class StudentsComponent {
             })
             .afterClosed()
             .subscribe({
-                next: (v) => {
-                    if (!!v) {
-                        this.students = this.students.map((s) =>
-                            s.id === student.id ? { ...s, ...v } : s,
-                        );
+                next: (updateStudent) => {
+                    if (!!updateStudent) {
+                        this.studentsService
+                            .updateStudent(student.id, updateStudent)
+                            .subscribe((newStudent) => {
+                                Swal.fire(
+                                    'Actualizado',
+                                    'El estudiante fue actualizado con éxito',
+                                    'success',
+                                );
+                                this.students = this.students.map((s) =>
+                                    s.id === newStudent.id ? newStudent : s,
+                                );
+                            });
                     }
                 },
             });
@@ -78,12 +96,16 @@ export class StudentsComponent {
             confirmButtonText: 'Si, Eliminar!',
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                    'Eliminado!',
-                    'El estudiante fue eliminado.',
-                    'success',
-                );
-                this.students = this.students.filter((s) => s.id !== studentId);
+                this.studentsService.deleteStudent(studentId).subscribe(() => {
+                    Swal.fire(
+                        'Eliminado!',
+                        'El estudiante fue eliminado.',
+                        'success',
+                    );
+                    this.students = this.students.filter(
+                        (s) => s.id !== studentId,
+                    );
+                });
             }
         });
     }

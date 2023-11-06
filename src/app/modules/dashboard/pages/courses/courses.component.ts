@@ -18,7 +18,11 @@ export class CoursesComponent {
         private dialogCourse: MatDialog,
         private coursesServices: CourseService,
     ) {
-        this.courses = this.coursesServices.getCourses();
+        this.coursesServices
+            .getCourses()
+            .subscribe((data: CourseInterface[]) => {
+                this.courses = data;
+            });
     }
 
     // AGREGAR ESTUDIANTE
@@ -29,13 +33,23 @@ export class CoursesComponent {
             .subscribe({
                 next: (valor) => {
                     if (!!valor) {
-                        this.courses = [
-                            ...this.courses,
-                            {
-                                ...valor,
-                                id: this.courses.length + 1,
+                        this.coursesServices.addCourse(valor).subscribe(
+                            (newCourse) => {
+                                this.courses = [...this.courses, newCourse];
+                                Swal.fire(
+                                    'Éxito',
+                                    'Curso agregado con éxito',
+                                    'success',
+                                );
                             },
-                        ];
+                            (error) => {
+                                Swal.fire(
+                                    'Error',
+                                    'Hubo un problema al agregar el usuario',
+                                    'error',
+                                );
+                            },
+                        );
                     }
                 },
             });
@@ -49,26 +63,26 @@ export class CoursesComponent {
             })
             .afterClosed()
             .subscribe({
-                next: (v) => {
-                    if (!!v) {
-                        this.courses = this.courses.map((c) =>
-                            c.id === course.id ? { ...c, ...v } : c,
-                        );
+                next: (updateCourse) => {
+                    if (!!updateCourse) {
+                        this.coursesServices
+                            .updateCourse(course.id, updateCourse)
+                            .subscribe((newCourse) => {
+                                Swal.fire(
+                                    'Actualizado',
+                                    'El curso fue actualizado con éxito',
+                                    'success',
+                                );
+                                this.courses = this.courses.map((u) =>
+                                    u.id === newCourse.id ? newCourse : u,
+                                );
+                            });
                     }
                 },
             });
     }
 
     //ELIMINAR ESTUDIANTE
-    /*onDeleteCourse(courseId: number): void {
-        this.courses = this.courses.filter((s) => s.id !== courseId);
-        Swal.fire({
-            icon: 'success',
-            title: 'Curso Eliminado',
-            showConfirmButton: false,
-            timer: 1800,
-        });
-    }*/
     onDeleteCourse(courseId: number): void {
         Swal.fire({
             title: 'Estas seguro?',
@@ -80,8 +94,16 @@ export class CoursesComponent {
             confirmButtonText: 'Si, Eliminar!',
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire('Eliminado!', 'El curso fue eliminado.', 'success');
-                this.courses = this.courses.filter((s) => s.id !== courseId);
+                this.coursesServices.deleteCourse(courseId).subscribe(() => {
+                    Swal.fire(
+                        'Eliminado!',
+                        'El curso fue eliminado.',
+                        'success',
+                    );
+                    this.courses = this.courses.filter(
+                        (s) => s.id !== courseId,
+                    );
+                });
             }
         });
     }
