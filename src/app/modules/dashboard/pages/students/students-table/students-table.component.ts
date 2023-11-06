@@ -21,7 +21,6 @@ export class StudentsTableComponent {
         'age',
         'email',
         'course',
-        'regDate',
         'actions',
     ];
 }

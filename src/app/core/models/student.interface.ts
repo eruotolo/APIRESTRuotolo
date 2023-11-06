@@ -5,5 +5,5 @@ export interface StudentInterface {
     age: number;
     email: string;
     course: string;
-    regDate: Date;
+    /*regDate: Date;*/
 }

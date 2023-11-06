@@ -17,7 +17,10 @@ export class UsersComponent {
         private dialogUser: MatDialog,
         private userService: UsersService,
     ) {
-        this.users = this.userService.getUsers();
+        /*this.users = this.userService.getUsers();*/
+        this.userService.getUsers().subscribe((data: UserInterface[]) => {
+            this.users = data;
+        });
     }
 
     // AGREGAR USUARIO
@@ -28,13 +31,23 @@ export class UsersComponent {
             .subscribe({
                 next: (valor) => {
                     if (!!valor) {
-                        this.users = [
-                            ...this.users,
-                            {
-                                ...valor,
-                                id: this.users.length + 1,
+                        this.userService.addUser(valor).subscribe(
+                            (newUser) => {
+                                this.users = [...this.users, newUser];
+                                Swal.fire(
+                                    'Éxito',
+                                    'Usuario agregado con éxito',
+                                    'success',
+                                );
                             },
-                        ];
+                            (error) => {
+                                Swal.fire(
+                                    'Error',
+                                    'Hubo un problema al agregar el usuario',
+                                    'error',
+                                );
+                            },
+                        );
                     }
                 },
             });
@@ -48,27 +61,24 @@ export class UsersComponent {
             })
             .afterClosed()
             .subscribe({
-                next: (v) => {
-                    if (!!v) {
-                        this.users = this.users.map((u) =>
-                            u.id === user.id ? { ...u, ...v } : u,
-                        );
+                next: (updatedUser) => {
+                    if (!!updatedUser) {
+                        this.userService
+                            .updateUser(user.id, updatedUser)
+                            .subscribe((newUser) => {
+                                Swal.fire(
+                                    'Actualizado',
+                                    'El usuario fue actualizado con éxito',
+                                    'success',
+                                );
+                                this.users = this.users.map((u) =>
+                                    u.id === newUser.id ? newUser : u,
+                                );
+                            });
                     }
                 },
             });
     }
-
-    // ELIMINAR USUARIO
-    /*onDeleteUser(userId: number): void {
-        this.users = this.users.filter((u) => u.id !== userId);
-
-        Swal.fire({
-            icon: 'success',
-            title: 'Usuario Eliminado',
-            showConfirmButton: false,
-            timer: 2000,
-        });
-    }*/
 
     onDeleteUser(userId: number): void {
         Swal.fire({
@@ -81,8 +91,14 @@ export class UsersComponent {
             confirmButtonText: 'Si, Eliminar!',
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire('Eliminado!', 'El usuario fue eliminado.', 'success');
-                this.users = this.users.filter((u) => u.id !== userId);
+                this.userService.deleteUser(userId).subscribe(() => {
+                    Swal.fire(
+                        'Eliminado',
+                        'El usuario fue eliminado con éxito',
+                        'success',
+                    );
+                    this.users = this.users.filter((u) => u.id !== userId);
+                });
             }
         });
     }

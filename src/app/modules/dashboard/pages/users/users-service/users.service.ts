@@ -1,42 +1,32 @@
 import { Injectable } from '@angular/core';
+
 import { UserInterface } from '@core/models/user.interface';
+import { environment } from '../../../../../../environments/environment.local';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class UsersService {
-    constructor() {}
+    private baseUrl = environment.baseUrl + '/users';
+    public users: UserInterface[] = [];
+    constructor(private httpClient: HttpClient) {}
 
-    getUsers(): UserInterface[] {
-        console.log('retornando data mock');
-        return [
-            {
-                id: 1,
-                name: 'Edgardo',
-                lastname: 'Ruotolo',
-                email: 'edgardoruotolo@gmail.com',
-                rol: 'Admin',
-                password: 'admin',
-                token: 'asdfghjklñasdfghjklñasdfghjklñ',
-            },
-            {
-                id: 2,
-                name: 'Mariano',
-                lastname: 'Martinez',
-                email: 'marianomartinez@gmail.com',
-                rol: 'User',
-                password: '123456',
-                token: 'zxcvbnmzxcvbnmzxcvbnm',
-            },
-            {
-                id: 3,
-                name: 'Ignacio',
-                lastname: 'De León',
-                email: 'idelon@gmail.com',
-                rol: 'User',
-                password: '123456',
-                token: 'qwertyuiopqwertyuiopqwertyuiop',
-            },
-        ];
+    getUsers(): Observable<UserInterface[]> {
+        return this.httpClient.get<UserInterface[]>(this.baseUrl);
+    }
+
+    addUser(user: UserInterface): Observable<UserInterface> {
+        return this.httpClient.post<UserInterface>(this.baseUrl, user);
+    }
+
+    updateUser(userId: number, user: UserInterface): Observable<UserInterface> {
+        const url = `${this.baseUrl}/${userId}`;
+        return this.httpClient.put<UserInterface>(url, user);
+    }
+    deleteUser(userId: number): Observable<void> {
+        const url = `${this.baseUrl}/${userId}`;
+        return this.httpClient.delete<void>(url);
     }
 }

@@ -5,6 +5,7 @@ import { StudentsService } from '@modules/dashboard/pages/students/students-serv
 import { MatDialog } from '@angular/material/dialog';
 import { StudentsDialogComponent } from '@modules/dashboard/pages/students/students-dialog/students-dialog.component';
 import Swal from 'sweetalert2';
+import { UserInterface } from '@core/models/user.interface';
 
 @Component({
     selector: 'app-students',
@@ -18,7 +19,12 @@ export class StudentsComponent {
         private dialogStudent: MatDialog,
         private studentsService: StudentsService,
     ) {
-        this.students = this.studentsService.getStudents();
+        /*this.students = this.studentsService.getStudents();*/
+        this.studentsService
+            .getStudents()
+            .subscribe((data: StudentInterface[]) => {
+                this.students = data;
+            });
     }
 
     // AGREGAR ESTUDIANTE
@@ -35,7 +41,6 @@ export class StudentsComponent {
                             {
                                 ...valor,
                                 id: this.students.length + 1,
-                                regDate: currentDate,
                             },
                         ];
                     }

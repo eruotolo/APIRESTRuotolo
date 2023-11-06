@@ -1,12 +1,23 @@
 import { Injectable } from '@angular/core';
 import { StudentInterface } from '@core/models/student.interface';
+import { environment } from '../../../../../../environments/environment.local';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class StudentsService {
-    constructor() {}
-    getStudents(): StudentInterface[] {
+    private baseUrl = environment.baseUrl + '/students';
+
+    public students: StudentInterface[] = [];
+    constructor(private httpClient: HttpClient) {}
+
+    getStudents(): Observable<StudentInterface[]> {
+        return this.httpClient.get<StudentInterface[]>(this.baseUrl);
+    }
+
+    /*getStudents(): StudentInterface[] {
         console.log('retornando data mock');
         return [
             {
@@ -100,5 +111,5 @@ export class StudentsService {
                 regDate: new Date(),
             },
         ];
-    }
+    }*/
 }
