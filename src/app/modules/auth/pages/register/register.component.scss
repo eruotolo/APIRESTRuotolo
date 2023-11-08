@@ -5,6 +5,43 @@
 .login {
     height: 100vh;
 }
+.form-login {
+    padding: 30px 30px;
+    border-radius: 15px;
+    width: 400px;
+    height: auto;
+}
+.form-login > img {
+    text-align: center;
+    margin-bottom: 10px;
+    margin-left: 35%;
+}
+.form-login > h3 {
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+.form-login > h4 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: lighter;
+}
+
+.btn-into > button {
+    width: 50%;
+    margin-left: 25%;
+}
+.link-reg {
+    float: right;
+    padding-top: 30px;
+    text-decoration: none;
+    color: #536471;
+    font-size: 14px;
+}
+.link-reg > a {
+    text-decoration: none;
+}
+
 .students {
     height: 100vh;
     background-image: linear-gradient(

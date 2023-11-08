@@ -2,8 +2,8 @@
   "users": [
     {
       "id": 1,
-      "name": "admin",
-      "lastname": "admin",
+      "name": "Edgardo",
+      "lastname": "Ruotolo",
       "email": "admin@gmail.com",
       "rol": "Admin",
       "password": "admin",
@@ -11,8 +11,8 @@
     },
     {
       "id": 2,
-      "name": "Edgardo",
-      "lastname": "Ruotolo",
+      "name": "Antonio",
+      "lastname": "Cardozo",
       "email": "edgardoruotolo@gmail.com",
       "rol": "Admin",
       "password": "123456",
@@ -28,18 +28,31 @@
       "token": "qwertyuiopqwertyuiopqwertyuiop"
     },
     {
-      "name": "Sam",
-      "lastname": "Roberto",
-      "email": "samuel@gmail.com",
+      "id": 4,
+      "name": "Samito",
+      "lastname": "Lapaz",
+      "email": "samito@gmail.com",
       "rol": "User",
-      "id": 4
+      "password": "123456",
+      "token": "i7mxfawnhnq"
     },
     {
-      "name": "Anton",
-      "lastname": "Ruotolo",
-      "email": "antonio@gmail.com",
-      "rol": "Admin",
-      "id": 5
+      "id": 5,
+      "name": "Victoria",
+      "lastname": "Lapaz",
+      "email": "dravictoria.lapaz@gmail.com",
+      "rol": "User",
+      "password": "123456",
+      "token": "ca6ps9a7rsb"
+    },
+    {
+      "id": 6,
+      "name": "Fernando",
+      "lastname": "Duran",
+      "email": "fdo@gmail.com",
+      "rol": "User",
+      "password": "123456",
+      "token": "73pqvjz89iq"
     }
   ],
   "courses": [
@@ -76,12 +89,12 @@
   ],
   "students": [
     {
-      "id": 1,
-      "name": "John",
-      "lastname": "Doe",
-      "age": 20,
+      "name": "Johnn",
+      "lastname": "Doee",
       "email": "example@gmail.com",
-      "course": "Math"
+      "age": 20,
+      "course": "Math",
+      "id": 1
     },
     {
       "id": 2,

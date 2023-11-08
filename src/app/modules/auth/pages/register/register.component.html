@@ -1,10 +1,64 @@
 <div class="container-fluid pag-log">
     <div class="row">
         <div class="col-xxl-3 col-lg-4 col-md-5 d-flex flex-column justify-content-center align-items-center login">
+            <div class="form-login">
+                <img ngSrc="{{ logoPrincipal }}" alt="logo" width="100" height="120"/>
+                <h3>Registrarse!</h3>
+                <form [formGroup]="userForm">
+                    <div class="d-flex flex-column">
+                        <mat-form-field appearance="outline" class="inputName">
+                            <mat-label>Nombre</mat-label>
+                            <input
+                                [formControl]="nameControl"
+                                matInput
+                                placeholder="Nombre">
+                            <mat-error>Este campo es requerido</mat-error>
+                            <mat-error>La longitud mínima es de</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="inputLastName">
+                            <mat-label>Apellido</mat-label>
+                            <input
+                                [formControl]="lastnameControl"
+                                matInput
+                                placeholder="Apellido">
+                            <mat-error>Este campo es requerido</mat-error>
+                            <mat-error>La longitud mínima es de</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="inputEmail">
+                            <mat-label>Email</mat-label>
+                            <input
+                                [formControl]="emailControl"
+                                matInput
+                                type="email"
+                                placeholder="Ex. pat@example.com">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="inputPassword">
+                            <mat-label>Password</mat-label>
+                            <input
+                                matInput
+                                [formControl]="passControl"
+                                type="password"
+                                placeholder="Ingrese su password">
+                        </mat-form-field>
+
+                        <div class="col-12 btn-into">
+                            <mat-dialog-actions align="center" class="btn-into">
+                                <button
+                                    (click)="onSubmit()"
+                                    mat-flat-button
+                                    color="primary">Registrarse</button>
+                            </mat-dialog-actions>
+                        </div>
+
+                    </div>
+                </form>
+                <p class="link-reg">¿No tienes una cuenta? <a routerLink="../login"> Iniciar Sesión</a></p>
+            </div>
 
         </div>
-        <div class="col-xxl-9 col-lg-8 col-md-7 students">
-
-        </div>
+        <div class="col-xxl-9 col-lg-8 col-md-7 students"></div>
     </div>
 </div>

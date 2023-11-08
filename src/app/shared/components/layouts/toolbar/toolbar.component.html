@@ -14,17 +14,18 @@
 
     <span class="example-spacer"></span>
 
-    <button mat-button [matMenuTriggerFor]="menu">
-        <mat-icon class="profile-menu">account_circle</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-            <mat-icon class="icon-nav2">manage_accounts</mat-icon>
-            Perfil
+    <div class="d-flex perfil">
+        <p>{{ fullName$ | async}}</p>
+        <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon class="profile-menu">keyboard_arrow_down</mat-icon>
         </button>
-        <button mat-menu-item (click)="logout()">
-            <mat-icon class="icon-nav2">logout</mat-icon>
-            Cerrar Sesión
-        </button>
-    </mat-menu>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logout()">
+                <mat-icon class="icon-nav2">logout</mat-icon>
+                Cerrar Sesión
+            </button>
+        </mat-menu>
+    </div>
+
+
 </mat-toolbar>

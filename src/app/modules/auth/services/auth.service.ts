@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
     private _authUser$ = new BehaviorSubject<UserInterface | null>(null);
-
     public authUser$ = this._authUser$.asObservable();
+
     constructor(
         private httpCliente: HttpClient,
         private router: Router,
