@@ -50,10 +50,6 @@ export class StudentsDialogComponent {
         Validators.minLength(10),
         emailValidator,
     ]);
-    courseControl = new FormControl('', [
-        Validators.required,
-        Validators.minLength(3),
-    ]);
 
     // CONSTRUCTOR
     constructor(
@@ -67,7 +63,6 @@ export class StudentsDialogComponent {
             lastname: this.lastnameControl,
             email: this.emailControl,
             age: this.ageControl,
-            course: this.courseControl,
         });
 
         if (this.student) {

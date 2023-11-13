@@ -15,12 +15,5 @@ export class StudentsTableComponent {
     @Output()
     editUser = new EventEmitter<StudentInterface>();
 
-    displayedColumns: string[] = [
-        'id',
-        'fullname',
-        'age',
-        'email',
-        'course',
-        'actions',
-    ];
+    displayedColumns: string[] = ['id', 'fullname', 'age', 'email', 'actions'];
 }

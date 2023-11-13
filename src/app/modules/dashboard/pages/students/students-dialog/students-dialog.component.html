@@ -40,7 +40,7 @@
                             </mat-error>
                         </mat-form-field>
                     </div>
-                    <div class="col-12">
+                    <div class="col-6">
                         <mat-form-field appearance="outline" class="inputEmail">
                             <mat-label>Email</mat-label>
                             <input
@@ -73,22 +73,6 @@
                             </mat-error>
                             <mat-error *ngIf="ageControl.hasError('pattern')">
                                 Ingrese solo números en este campo
-                            </mat-error>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-6">
-                        <mat-form-field appearance="outline" class="inputCurso">
-                            <mat-label>Curso</mat-label>
-                            <input
-                                [formControl]="courseControl"
-                                matInput
-                                type="text">
-                            <mat-error *ngIf="courseControl.hasError('required')">
-                                Este campo es requerido
-                            </mat-error>
-                            <mat-error *ngIf="courseControl.hasError('minlength')">
-                                La longitud mínima es de {{ courseControl.getError('minlength').requiredLength }}
-                                caracteres.
                             </mat-error>
                         </mat-form-field>
                     </div>

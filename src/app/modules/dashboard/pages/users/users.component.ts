@@ -25,13 +25,17 @@ export class UsersComponent {
 
     // AGREGAR USUARIO
     abrirPopUpUsuario(): void {
+        // Generar un token aleatorio (puedes personalizar la generación de token según tus necesidades)
+        const randomToken = Math.random().toString(36).substring(2);
+
         this.dialogUser
             .open(UsersDialogComponent)
             .afterClosed()
             .subscribe({
                 next: (valor) => {
                     if (!!valor) {
-                        this.userService.addUser(valor).subscribe(
+                        const userWithToken = { ...valor, token: randomToken };
+                        this.userService.addUser(userWithToken).subscribe(
                             (newUser) => {
                                 this.users = [...this.users, newUser];
                                 Swal.fire(
@@ -55,6 +59,8 @@ export class UsersComponent {
 
     //EDITAR ESTUDIANTE
     onEditUser(user: UserInterface) {
+        const randomToken = Math.random().toString(36).substring(2);
+
         this.dialogUser
             .open(UsersDialogComponent, {
                 data: user,
@@ -63,8 +69,12 @@ export class UsersComponent {
             .subscribe({
                 next: (updatedUser) => {
                     if (!!updatedUser) {
+                        const userWithToken = {
+                            ...updatedUser,
+                            token: randomToken,
+                        };
                         this.userService
-                            .updateUser(user.id, updatedUser)
+                            .updateUser(user.id, userWithToken)
                             .subscribe((newUser) => {
                                 Swal.fire(
                                     'Actualizado',

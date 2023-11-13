@@ -10,13 +10,13 @@
       "token": "asdfghjklñasdfghjklñasdfghjklñ"
     },
     {
-      "id": 2,
       "name": "Antonio",
       "lastname": "Cardozo",
       "email": "edgardoruotolo@gmail.com",
       "rol": "Admin",
-      "password": "123456",
-      "token": "zxcvbnmzxcvbnmzxcvbnm"
+      "password": "qwaszx",
+      "token": "6ko9mhgqw9r",
+      "id": 2
     },
     {
       "id": 3,
@@ -93,7 +93,6 @@
       "lastname": "Doee",
       "email": "example@gmail.com",
       "age": 20,
-      "course": "Math",
       "id": 1
     },
     {
@@ -101,72 +100,70 @@
       "name": "Jane",
       "lastname": "Smith",
       "age": 22,
-      "email": "example@gmail.com",
-      "course": "English"
+      "email": "example@gmail.com"
     },
     {
       "id": 3,
       "name": "Michael",
       "lastname": "Johnson",
       "age": 19,
-      "email": "example@gmail.com",
-      "course": "Science"
+      "email": "example@gmail.com"
     },
     {
       "id": 4,
       "name": "Emily",
       "lastname": "Williams",
       "age": 21,
-      "email": "example@gmail.com",
-      "course": "History"
+      "email": "example@gmail.com"
     },
     {
       "id": 5,
       "name": "Daniel",
       "lastname": "Brown",
       "age": 20,
-      "email": "example@gmail.com",
-      "course": "Geography"
+      "email": "example@gmail.com"
     },
     {
       "id": 6,
       "name": "Olivia",
       "lastname": "Jones",
       "age": 22,
-      "email": "example@gmail.com",
-      "course": "Art"
+      "email": "example@gmail.com"
     },
     {
       "id": 7,
       "name": "Matthew",
       "lastname": "Davis",
       "age": 19,
-      "email": "example@gmail.com",
-      "course": "Music"
+      "email": "example@gmail.com"
     },
     {
       "id": 8,
       "name": "Sophia",
       "lastname": "Miller",
       "age": 21,
-      "email": "example@gmail.com",
-      "course": "Physics"
+      "email": "example@gmail.com"
     },
     {
       "id": 9,
       "name": "Dav",
       "lastname": "Wilson",
       "age": 20,
-      "email": "example@gmail.com",
-      "course": "Chemistry"
+      "email": "example@gmail.com"
     },
     {
       "name": "Emmas",
       "lastname": "Taylor",
       "email": "example@gmail.com",
       "age": 22,
-      "course": "Biology",
       "id": 10
+    },
+    {
+      "name": "Antony",
+      "lastname": "Ceballos",
+      "email": "antonio@gmail.com",
+      "age": 40,
+      "id": 11
     }
   ]
 }

@@ -49,6 +49,10 @@ export class UsersDialogComponent {
         Validators.required,
         Validators.minLength(2),
     ]);
+    passControl = new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+    ]);
 
     // CONSTRUCTOR
     constructor(
@@ -62,6 +66,7 @@ export class UsersDialogComponent {
             lastname: this.lastnameControl,
             email: this.emailControl,
             rol: this.roleControl,
+            password: this.passControl,
         });
 
         if (this.user) {
